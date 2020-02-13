@@ -11,6 +11,13 @@ import { GestoresListarComponent } from './components/gestores/listar/gestores-l
 import { AlertComponent } from './components/alert/alert.component';
 import { LoginGestorComponent } from './components/login/login-gestor/login-gestor.component';
 import { LoginClienteComponent } from './components/login/login-cliente/login-cliente.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
+import { MensajesComponent } from './components/mensajes/mensajes.component';
+import { TransferenciasComponent } from './components/transferencias/transferencias.component';
+import { ClienteInfoComponent } from './components/cliente-info/cliente-info.component';
+import { ClienteIngresoComponent } from './components/cliente-ingreso/cliente-ingreso.component';
+import { ClienteTransferenciaComponent } from './components/cliente-transferencia/cliente-transferencia.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +29,13 @@ import { LoginClienteComponent } from './components/login/login-cliente/login-cl
     AlertComponent,
     LoginGestorComponent,
     LoginClienteComponent,
+    ClientesComponent,
+    MensajesComponent,
+    TransferenciasComponent,
+    ClienteInfoComponent,
+    ClienteIngresoComponent,
+    ClienteTransferenciaComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

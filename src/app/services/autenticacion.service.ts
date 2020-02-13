@@ -25,6 +25,22 @@ export class AutenticacionService {
     }
   }
 
+  getTokenCliente() {
+    return this.tokenCliente;
+  }
+
+  getTokenGestor() {
+    return this.tokenGestor;
+  }
+
+  setTokenCliente(token: string) {
+    this.tokenCliente = token;
+  }
+
+  setTokenGestor(token: string) {
+    this.tokenGestor = token;
+  }
+
   estaClienteAutenticado(): boolean {
     return (this.tokenCliente) ? true : false;
   }

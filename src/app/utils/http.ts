@@ -16,13 +16,18 @@ export enum TOKEN_TAG {
 
 export class Http {
 
-  protected token: string;
+  constructor(protected autenticacionService: AutenticacionService, protected tag: TOKEN_TAG) { }
 
-  constructor(protected autenticacionService: AutenticacionService, protected tag: TOKEN_TAG) {
-    this.token = localStorage.getItem(tag);
-    if (this.token) {
-      this.autenticado();
-    }
+  set token(token: string) {
+    (this.tag === TOKEN_TAG.CLIENTE) ?
+      this.autenticacionService.setTokenCliente(token) :
+      this.autenticacionService.setTokenGestor(token);
+  }
+
+  get token(): string {
+    return (this.tag === TOKEN_TAG.CLIENTE) ?
+      this.autenticacionService.getTokenCliente() :
+      this.autenticacionService.getTokenGestor();
   }
 
   private autenticado() {

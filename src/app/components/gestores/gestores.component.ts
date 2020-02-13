@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../services/alert.service';
 import { TIPO_ALERTA } from '../../data/alerta';
+import { HttpGestorService } from '../../services/http-gestor.service';
 
 @Component({
   selector: 'app-gestores',
@@ -9,13 +10,9 @@ import { TIPO_ALERTA } from '../../data/alerta';
 })
 export class GestoresComponent implements OnInit {
 
-  constructor(private alertService: AlertService) { }
+  constructor(private alertService: AlertService, private httpGestorService: HttpGestorService) { 
 
-  ngOnInit() {
-    /*this.alertService.enviarAlerta({
-      texto: 'Esto es un mensaje de prueba',
-      tipo: TIPO_ALERTA.DANGER,
-      tiempo: 2000,
-    });*/
   }
+
+  ngOnInit() { }
 }

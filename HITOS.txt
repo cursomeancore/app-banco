@@ -6,3 +6,6 @@
 6. Refactorizar los métodos HTTP utilizando genéricos
 7. Implementar un servicio de autenticación que notifique cuándo el cliente o el login están autenticados o no.
 8. Cambiar la cabecera para que se adapte al login del gestor, cliente y anónimo.
+9. Crear todos los componentes y asociarlos con las rutas
+10. Proteger rutas con route guards
+11. Obtener los gestores del servicio REST y mostrarlos en el componente de gestores-listar.
