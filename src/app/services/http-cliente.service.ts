@@ -42,7 +42,7 @@ export class HttpClienteService implements InterfazCliente, InterfazAutenticatio
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -71,7 +71,7 @@ export class HttpClienteService implements InterfazCliente, InterfazAutenticatio
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -96,7 +96,7 @@ export class HttpClienteService implements InterfazCliente, InterfazAutenticatio
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -121,7 +121,7 @@ export class HttpClienteService implements InterfazCliente, InterfazAutenticatio
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -146,7 +146,7 @@ export class HttpClienteService implements InterfazCliente, InterfazAutenticatio
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -172,7 +172,7 @@ export class HttpClienteService implements InterfazCliente, InterfazAutenticatio
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });

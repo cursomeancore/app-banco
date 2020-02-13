@@ -1,4 +1,4 @@
-import { Observable, Subscriber } from 'rxjs';
+import { Observable, Subscriber, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Gestor } from '../models/gestor';
 import { Cliente } from '../models/cliente';
@@ -23,6 +23,8 @@ const URL_MENSAJES_RECIBIDOS = `${SERVER}/mensajes/recibidos/`;
 const URL_MENSAJES_ENVIADOS = `${SERVER}/mensajes/enviados/`;
 const URL_TRANSFERENCIAS = `${SERVER}/transferencias/`;
 
+const TOKEN_GESTOR = 'TOKEN_GESTOR';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,6 +39,11 @@ export class HttpGestorService implements
 
   login(usuario: string, password: string): Observable<boolean> {
 
+    this.token = (!this.token) ? localStorage.getItem(TOKEN_GESTOR) : this.token;
+    if (this.token) {
+      return of(true);
+    }
+
     const body = `usuario=${usuario}&password=${password}`;
     const headers: Headers = new Headers();
     headers.set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
@@ -48,6 +55,7 @@ export class HttpGestorService implements
           const data = await Http.post(URL_LOGIN_GESTOR, headers, body);
           const response = JSON.parse(data) as ResponseHttp<{ token: string }>;
           this.token = response.data.token;
+          localStorage.setItem(TOKEN_GESTOR, this.token);
 
           if (!response.ok) {
             observer.error(response.msg);
@@ -57,7 +65,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -88,7 +96,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -113,7 +121,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -138,7 +146,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -163,7 +171,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -188,7 +196,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -213,7 +221,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -239,7 +247,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -263,7 +271,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -287,7 +295,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -312,7 +320,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -337,7 +345,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -361,7 +369,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -386,7 +394,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -411,7 +419,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -436,7 +444,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -461,7 +469,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -487,7 +495,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -512,7 +520,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -537,7 +545,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -562,7 +570,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
@@ -587,7 +595,7 @@ export class HttpGestorService implements
           observer.complete();
 
         } catch (err) {
-          observer.error(err);
+          observer.error('Error interno del servidor');
         }
       })();
     });
