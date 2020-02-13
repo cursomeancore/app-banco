@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { TIPO_ALERTA } from '../../../data/alerta';
+import { Router } from '@angular/router';
+import { HttpClienteService } from '../../../services/http-cliente.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-login-cliente',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginClienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private htpClienteService: HttpClienteService,
+    private alertService: AlertService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  onLogin(usuarioInput: HTMLInputElement, passwordInput: HTMLInputElement) {
+
+    (async () => {
+
+      try {
+        await this.htpClienteService.login(usuarioInput.value, passwordInput.value).toPromise();
+        this.router.navigate(['/clientes']);
+      } catch (err) {
+        passwordInput.value = '';
+        this.alertService.enviarAlerta({
+          texto: err,
+          tiempo: 2000,
+          tipo: TIPO_ALERTA.DANGER
+        });
+      }
+    })();
+  }
 }
