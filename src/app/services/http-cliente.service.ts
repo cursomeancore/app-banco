@@ -48,6 +48,10 @@ export class HttpClienteService implements InterfazCliente, InterfazAutenticatio
     });
   }
 
+  isAuthenticated(): boolean {
+    return (this.token) ? true : false;
+  }
+
   obtenerInfo(): Observable<Cliente> {
     const headers: Headers = new Headers();
     headers.set('Authorization', `Basic ${this.token}`);

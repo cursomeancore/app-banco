@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from '../../services/alert.service';
+import { TIPO_ALERTA } from '../../data/alerta';
 
 @Component({
   selector: 'app-gestores',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestoresComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alertService: AlertService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.alertService.enviarAlerta({
+      texto: 'Esto es un mensaje de prueba',
+      tipo: TIPO_ALERTA.DANGER,
+      tiempo: 2000,
+    });
   }
-
 }

@@ -1,1 +1,2 @@
 1. Agregar un servicio con los métodos http.
+2. Implementar un servicio y un componente para mostrar advertencias al usuario.

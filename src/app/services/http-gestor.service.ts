@@ -63,6 +63,10 @@ export class HttpGestorService implements
     });
   }
 
+  isAuthenticated(): boolean {
+    return (this.token) ? true : false;
+  }
+
   agregarGestor(gestor: Gestor): Observable<string> {
 
     const headers: Headers = new Headers();

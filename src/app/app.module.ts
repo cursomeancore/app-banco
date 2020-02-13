@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { GestoresComponent } from './components/gestores/gestores.component';
 import { GestoresAgregarComponent } from './components/gestores/agregar/gestores-agregar.component';
 import { GestoresListarComponent } from './components/gestores/listar/gestores-listar.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { GestoresListarComponent } from './components/gestores/listar/gestores-l
     GestoresAgregarComponent,
     GestoresListarComponent,
     GestoresComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
