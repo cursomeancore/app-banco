@@ -1,9 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AutenticacionService } from '../../services/autenticacion.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.components.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+
+  clienteAutenticado = false;
+  gestorAutenticado = false;
+
+  constructor(private autenticacionService: AutenticacionService) { 
+    this.clienteAutenticado = this.autenticacionService.estaClienteAutenticado();
+    this.gestorAutenticado = this.autenticacionService.estaGestorAutenticado();
+  }
+
+  ngOnInit() {
+
+    this.autenticacionService.getAlertasGestor().subscribe(autenticado => {
+      this.gestorAutenticado = autenticado;
+    });
+
+    this.autenticacionService.getAlertasCliente().subscribe(autenticado => {
+      this.clienteAutenticado = autenticado;
+    });
+  }
+
+  onLogout() {
+    this.autenticacionService.logout();
+  }
 }

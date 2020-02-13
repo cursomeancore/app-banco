@@ -35,7 +35,7 @@ export class HttpGestorService extends Http implements
   InterfazTransferencias {
 
   constructor(protected autenticacionService: AutenticacionService) {
-    super(autenticacionService, TOKEN_TAG.TOKEN_GESTOR);
+    super(autenticacionService, TOKEN_TAG.GESTOR);
   }
 
   login(usuario: string, password: string): Observable<boolean> {

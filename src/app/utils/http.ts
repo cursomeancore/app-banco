@@ -20,6 +20,9 @@ export class Http {
 
   constructor(protected autenticacionService: AutenticacionService, protected tag: TOKEN_TAG) {
     this.token = localStorage.getItem(tag);
+    if (this.token) {
+      this.autenticado();
+    }
   }
 
   private autenticado() {
