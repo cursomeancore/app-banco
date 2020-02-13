@@ -9,6 +9,8 @@ import { GestoresComponent } from './components/gestores/gestores.component';
 import { GestoresAgregarComponent } from './components/gestores/agregar/gestores-agregar.component';
 import { GestoresListarComponent } from './components/gestores/listar/gestores-listar.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { LoginGestorComponent } from './components/login/login-gestor/login-gestor.component';
+import { LoginClienteComponent } from './components/login/login-cliente/login-cliente.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { AlertComponent } from './components/alert/alert.component';
     GestoresListarComponent,
     GestoresComponent,
     AlertComponent,
+    LoginGestorComponent,
+    LoginClienteComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,10 +12,10 @@ export class GestoresComponent implements OnInit {
   constructor(private alertService: AlertService) { }
 
   ngOnInit() {
-    this.alertService.enviarAlerta({
+    /*this.alertService.enviarAlerta({
       texto: 'Esto es un mensaje de prueba',
       tipo: TIPO_ALERTA.DANGER,
       tiempo: 2000,
-    });
+    });*/
   }
 }

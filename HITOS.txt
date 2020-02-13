@@ -1,2 +1,4 @@
 1. Agregar un servicio con los métodos http.
 2. Implementar un servicio y un componente para mostrar advertencias al usuario.
+3. Implementar los componentes login para el gestor y el cliente.
+4. Implementar la lógica para el login del gestor. Guardar el token en el localStorage
