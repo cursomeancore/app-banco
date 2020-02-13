@@ -3,3 +3,4 @@
 3. Implementar los componentes login para el gestor y el cliente.
 4. Implementar la lógica para el login del gestor. Guardar el token en el localStorage
 5. Implementar la lógica para el login del cliente. Guardar el token en el localStorage
+6. Refactorizar los métodos HTTP utilizando genéricos
