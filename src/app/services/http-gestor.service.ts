@@ -10,7 +10,8 @@ import { InterfazTransferencias } from './../services-base/interfazTransferencia
 import { InterfazClientes } from '../services-base/interfazClientes';
 import { InterfazAutentication } from '../services-base/interfazAutenticacion';
 import { OPTIONS } from '../utils/options';
-import { ExecuteHttp, METODOS_HTTP } from '../utils/executeHttp';
+import { AutenticacionService } from './autenticacion.service';
+import { Http, METODOS_HTTP, TOKEN_TAG } from '../utils/http';
 
 const SERVER = OPTIONS.SERVER;
 const URL_LOGIN_GESTOR = `${SERVER}/login/gestor/`;
@@ -26,12 +27,16 @@ const TOKEN_GESTOR = 'TOKEN_GESTOR';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpGestorService extends ExecuteHttp implements
+export class HttpGestorService extends Http implements
   InterfazAutentication,
   InterfazClientes,
   InterfazGestores,
   InterfazMensajes,
   InterfazTransferencias {
+
+  constructor(protected autenticacionService: AutenticacionService) {
+    super(autenticacionService, TOKEN_TAG.TOKEN_GESTOR);
+  }
 
   login(usuario: string, password: string): Observable<boolean> {
     return super.login(usuario, password, URL_LOGIN_GESTOR);

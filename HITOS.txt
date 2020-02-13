@@ -4,3 +4,4 @@
 4. Implementar la lógica para el login del gestor. Guardar el token en el localStorage
 5. Implementar la lógica para el login del cliente. Guardar el token en el localStorage
 6. Refactorizar los métodos HTTP utilizando genéricos
+7. Implementar un servicio de autenticación que notifique cuándo el cliente o el login están autenticados o no.
