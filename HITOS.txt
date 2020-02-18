@@ -9,3 +9,7 @@
 9. Crear todos los componentes y asociarlos con las rutas
 10. Proteger rutas con route guards
 11. Obtener los gestores del servicio REST y mostrarlos en el componente de gestores-listar.
+12. Implementar la lógica asociada a la agregación de un gestor.
+13. Realizar logout y redireccionar a la pantalla de login si se produce un error interno.
+14. Redireccionar a login cuando el token de autenticación se vuelve inválido o cuando se caíga el servicio REST
+15. Implementar la lógica necesaria para actualizar la lista de gestores cuando se agrega uno nuevo sin necesidad de recargar la página
