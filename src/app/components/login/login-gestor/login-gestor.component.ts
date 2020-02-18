@@ -26,7 +26,7 @@ export class LoginGestorComponent implements OnInit {
 
       try {
         await this.httpGestorService.login(usuarioInput.value, passwordInput.value).toPromise();
-        this.router.navigate(['/gestores']);
+        this.router.navigate(['/']);
       } catch (err) {
         passwordInput.value = '';
         this.alertService.enviarAlerta({

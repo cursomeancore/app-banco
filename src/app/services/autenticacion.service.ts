@@ -1,5 +1,9 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { TOKEN_TAG } from '../utils/http';
+
+export enum TOKEN_TAG {
+  CLIENTE = 'TOKEN_CLIENTE',
+  GESTOR = 'TOKEN_GESTOR'
+}
 
 @Injectable({
   providedIn: 'root'
@@ -9,28 +13,31 @@ export class AutenticacionService {
   private alertasCliente = new EventEmitter<boolean>();
   private alertasGestor = new EventEmitter<boolean>();
 
-  private tokenCliente: string;
-  private tokenGestor: string;
+  set tokenGestor(token: string) {
+    (!token) ? localStorage.removeItem(TOKEN_TAG.GESTOR) : localStorage.setItem(TOKEN_TAG.GESTOR, token);
+  }
+
+  get tokenGestor() {
+    return localStorage.getItem(TOKEN_TAG.GESTOR);
+  }
+
+  set tokenCliente(token: string) {
+    (!token) ? localStorage.removeItem(TOKEN_TAG.CLIENTE) : localStorage.setItem(TOKEN_TAG.GESTOR, token);
+  }
+
+  get tokenCliente() {
+    return localStorage.getItem(TOKEN_TAG.CLIENTE);
+  }
 
   constructor() {
 
-    this.tokenCliente = localStorage.getItem(TOKEN_TAG.CLIENTE);
     if (this.tokenCliente) {
-      this.clienteAutenticado();
+      this.clienteAutenticado(this.tokenCliente);
     }
 
-    this.tokenGestor = localStorage.getItem(TOKEN_TAG.GESTOR);
     if (this.tokenGestor) {
-      this.gestorAutenticado();
+      this.gestorAutenticado(this.tokenGestor);
     }
-  }
-
-  getTokenCliente() {
-    return this.tokenCliente;
-  }
-
-  getTokenGestor() {
-    return this.tokenGestor;
   }
 
   setTokenCliente(token: string) {
@@ -49,7 +56,8 @@ export class AutenticacionService {
     return (this.tokenGestor) ? true : false;
   }
 
-  clienteAutenticado(): void {
+  clienteAutenticado(token: string): void {
+    this.tokenCliente = token;
     this.alertasCliente.emit(true);
   }
 
@@ -57,7 +65,8 @@ export class AutenticacionService {
     this.alertasCliente.emit(false);
   }
 
-  gestorAutenticado(): void {
+  gestorAutenticado(token: string): void {
+    this.tokenGestor = token;
     this.alertasGestor.emit(true);
   }
 
@@ -74,8 +83,8 @@ export class AutenticacionService {
   }
 
   logout() {
-    localStorage.removeItem(TOKEN_TAG.CLIENTE);
-    localStorage.removeItem(TOKEN_TAG.GESTOR);
+    this.tokenCliente = null;
+    this.tokenGestor = null;
     this.clienteNoAutenticado();
     this.gestorNoAutenticado();
   }

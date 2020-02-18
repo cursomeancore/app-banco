@@ -11,7 +11,6 @@ import { Gestor } from './../../../models/gestor';
 export class GestoresListarComponent implements OnInit {
 
   gestores: Gestor[];
-  
 
   constructor(private httpGestorService: HttpGestorService) { }
 

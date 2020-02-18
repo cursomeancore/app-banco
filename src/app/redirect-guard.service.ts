@@ -20,7 +20,6 @@ export class RedirectGuardService implements CanActivate {
       return true;
     }
 
-    // es un gestor
     if (this.authService.estaGestorAutenticado()) {
       this.router.navigate(['/gestores']);
       return true;

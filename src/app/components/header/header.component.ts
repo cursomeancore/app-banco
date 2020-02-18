@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutenticacionService } from '../../services/autenticacion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   clienteAutenticado = false;
   gestorAutenticado = false;
 
-  constructor(private autenticacionService: AutenticacionService) { 
+  constructor(private autenticacionService: AutenticacionService, private router: Router) {
     this.clienteAutenticado = this.autenticacionService.estaClienteAutenticado();
     this.gestorAutenticado = this.autenticacionService.estaGestorAutenticado();
   }

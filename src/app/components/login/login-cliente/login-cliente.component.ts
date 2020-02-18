@@ -26,7 +26,7 @@ export class LoginClienteComponent implements OnInit {
 
       try {
         await this.htpClienteService.login(usuarioInput.value, passwordInput.value).toPromise();
-        this.router.navigate(['/cliente', 'info']);
+        this.router.navigate(['/']);
       } catch (err) {
         passwordInput.value = '';
         this.alertService.enviarAlerta({
