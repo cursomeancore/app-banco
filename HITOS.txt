@@ -18,3 +18,5 @@
 18. Implementar la sección completa de los clientes
 19. Agregar icono de carga cuando se agrega/elimina un cliente/gestor
 20. Iluminar enlaces del header en las rutas activas
+21. Implementar la sección completa de los mensajes
+22. Implementar la sección completa de las transferencias

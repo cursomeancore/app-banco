@@ -1,0 +1,40 @@
+<div id="container" class="row">
+  
+  <h2>Mensajes recibidos</h2>
+  <button class="btn btn-primary" (click)="actualizarMensajes()">Actualizar</button>
+
+  <div id="loading" [ngClass]="!actualizado ?  'hidden' : ''">
+    <img height="20px" src="assets/loading.gif">
+  </div>
+
+  <table class="table" *ngIf="mensajesRecibidos && mensajesRecibidos.length > 0">
+    <thead>
+      <tr>
+        <th scope="col">#</th>        
+        <th scope="col">Origen</th>
+        <th scope="col">Texto</th>
+        <th scope="col">Fecha</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mensaje of mensajesRecibidos" id="{{mensaje.id}}">
+        <th scope="row">{{mensaje.id}}</th>
+        <td>{{mensaje.usuario_origen}}</td>
+        <td>{{mensaje.texto}}</td>
+        <td>{{mensaje.fecha}}</td>
+        <td>
+          <a [routerLink]="" (click)="onEliminarMensaje(mensaje)" >
+            <img height="20px" src="assets/icon-eliminar.png">
+          </a>
+        </td>
+        <td>
+          <span [ngClass]="(mensaje.id === eliminado) ?  '' : 'hidden'">
+            <img height="20px" src="assets/loading.gif">
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

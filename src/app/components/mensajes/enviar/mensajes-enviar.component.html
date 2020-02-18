@@ -1,0 +1,26 @@
+<form *ngIf="gestores && gestores.length > 0">
+  <div id="container" class="row">
+    <div class="col-md-2 form-group">
+
+      <label for="gestorDestinatario">Destinatario</label>
+      <select #gestorDestinatarioInput class="browser-default custom-select">
+        <option *ngFor="let gestor of gestores" value="{{gestor.id}}">
+          {{gestor.usuario}}
+        </option>
+      </select>
+
+      <button class="btn btn-success shadow-none" type="submit" (click)="onEnviarMensaje()">
+        Enviar
+      </button>
+
+      <div id="loading" [ngClass]="(enviado) ?  '' : 'hidden'">
+        <img height="20px" src="assets/loading.gif">
+      </div>
+    </div>
+
+    <div class="col-md-10 form-group">
+      <label for="usuario">Texto</label>
+      <textarea maxlength="140" rows="4" type="text" id="texto" class="form-control" #textoInput></textarea>
+    </div>
+  </div>
+</form>

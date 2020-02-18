@@ -20,6 +20,9 @@ import { ClienteTransferenciaComponent } from './components/cliente-transferenci
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClientesListarComponent } from './components/clientes/listar/clientes-listar.component';
 import { ClientesAgregarComponent } from './components/clientes/agregar/clientes-agregar.component';
+import { MensajesEnviarComponent } from './components/mensajes/enviar/mensajes-enviar.component';
+import { MensajesEnviadosComponent } from './components/mensajes/enviados/mensajes-enviados.component';
+import { MensajesRecibidosComponent } from './components/mensajes/recibidos/mensajes-recibidos.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { ClientesAgregarComponent } from './components/clientes/agregar/clientes
     ClienteTransferenciaComponent,
     NotFoundComponent,
     ClientesListarComponent,
-    ClientesAgregarComponent
+    ClientesAgregarComponent,
+    MensajesEnviarComponent,
+    MensajesEnviadosComponent,
+    MensajesRecibidosComponent
   ],
   imports: [
     BrowserModule,

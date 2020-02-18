@@ -1,0 +1,9 @@
+button {
+  margin-left: 1.2em;
+  height: 40px;
+}
+
+#loading {
+  float: right;
+  margin-left: 0.6em;
+}

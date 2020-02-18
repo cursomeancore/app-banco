@@ -5,6 +5,13 @@
 .btn-success:focus, 
 .btn-success.active { 
   background-color: #28a745; 
+  box-shadow: none;
+} 
+
+.btn-primary:focus, 
+.btn-primary.active { 
+  background-color: #007bff; 
+  box-shadow: none;
 } 
 
 .hidden {

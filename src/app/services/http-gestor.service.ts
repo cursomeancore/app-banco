@@ -17,8 +17,8 @@ const URL_LOGIN_GESTOR = `${SERVER}/login/gestor/`;
 const URL_GESTORES = `${SERVER}/gestores/`;
 const URL_CLIENTES = `${SERVER}/clientes/`;
 const URL_MENSAJES = `${SERVER}/mensajes/`;
-const URL_MENSAJES_RECIBIDOS = `${SERVER}/mensajes/recibidos/`;
-const URL_MENSAJES_ENVIADOS = `${SERVER}/mensajes/enviados/`;
+const URL_MENSAJES_RECIBIDOS = `${SERVER}/mensajes/recibidos`;
+const URL_MENSAJES_ENVIADOS = `${SERVER}/mensajes/enviados`;
 const URL_TRANSFERENCIAS = `${SERVER}/transferencias/`;
 
 @Injectable({
