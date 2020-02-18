@@ -6,6 +6,11 @@ export enum TOKEN_TAG {
   GESTOR = 'TOKEN_GESTOR'
 }
 
+export enum USUARIO_TAG {
+  CLIENTE = 'USUARIO_CLIENTE',
+  GESTOR = 'USUARIO_GESTOR'
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,40 +19,15 @@ export class AutenticacionService {
   private alertasCliente = new EventEmitter<boolean>();
   private alertasGestor = new EventEmitter<boolean>();
 
-
-  set tokenGestor(token: string) {
-    (!token) ? localStorage.removeItem(TOKEN_TAG.GESTOR) : localStorage.setItem(TOKEN_TAG.GESTOR, token);
-  }
-
-  get tokenGestor() {
-    return localStorage.getItem(TOKEN_TAG.GESTOR);
-  }
-
-  set tokenCliente(token: string) {
-    (!token) ? localStorage.removeItem(TOKEN_TAG.CLIENTE) : localStorage.setItem(TOKEN_TAG.GESTOR, token);
-  }
-
-  get tokenCliente() {
-    return localStorage.getItem(TOKEN_TAG.CLIENTE);
-  }
-
   constructor(private router: Router) {
 
     if (this.tokenCliente) {
-      this.clienteAutenticado(this.tokenCliente);
+      this.clienteAutenticado(this.tokenCliente, this.usuarioCliente);
     }
 
     if (this.tokenGestor) {
-      this.gestorAutenticado(this.tokenGestor);
+      this.gestorAutenticado(this.tokenGestor, this.usuarioGestor);
     }
-  }
-
-  setTokenCliente(token: string) {
-    this.tokenCliente = token;
-  }
-
-  setTokenGestor(token: string) {
-    this.tokenGestor = token;
   }
 
   estaClienteAutenticado(): boolean {
@@ -58,8 +38,9 @@ export class AutenticacionService {
     return (this.tokenGestor) ? true : false;
   }
 
-  clienteAutenticado(token: string): void {
+  clienteAutenticado(token: string, usuario: string): void {
     this.tokenCliente = token;
+    this.usuarioCliente = usuario;
     this.alertasCliente.emit(true);
   }
 
@@ -67,8 +48,9 @@ export class AutenticacionService {
     this.alertasCliente.emit(false);
   }
 
-  gestorAutenticado(token: string): void {
+  gestorAutenticado(usuario, token: string): void {
     this.tokenGestor = token;
+    this.usuarioGestor = usuario;
     this.alertasGestor.emit(true);
   }
 
@@ -87,8 +69,42 @@ export class AutenticacionService {
   logout() {
     this.tokenCliente = null;
     this.tokenGestor = null;
+    this.usuarioCliente = null;
+    this.usuarioGestor = null;
     this.clienteNoAutenticado();
     this.gestorNoAutenticado();
     this.router.navigate(['/']);
+  }
+
+  set tokenGestor(token: string) {
+    (!token) ? localStorage.removeItem(TOKEN_TAG.GESTOR) : localStorage.setItem(TOKEN_TAG.GESTOR, token);
+  }
+
+  get tokenGestor() {
+    return localStorage.getItem(TOKEN_TAG.GESTOR);
+  }
+
+  set tokenCliente(token: string) {
+    (!token) ? localStorage.removeItem(TOKEN_TAG.CLIENTE) : localStorage.setItem(TOKEN_TAG.CLIENTE, token);
+  }
+
+  get tokenCliente() {
+    return localStorage.getItem(TOKEN_TAG.CLIENTE);
+  }
+
+  set usuarioGestor(usuario: string) {
+    (!usuario) ? localStorage.removeItem(USUARIO_TAG.GESTOR) : localStorage.setItem(USUARIO_TAG.GESTOR, usuario);
+  }
+
+  get usuarioGestor() {
+    return localStorage.getItem(USUARIO_TAG.GESTOR);
+  }
+
+  set usuarioCliente(usuario: string) {
+    (!usuario) ? localStorage.removeItem(USUARIO_TAG.CLIENTE) : localStorage.setItem(USUARIO_TAG.CLIENTE, usuario);
+  }
+
+  get usuarioCliente() {
+    return localStorage.getItem(USUARIO_TAG.CLIENTE);
   }
 }

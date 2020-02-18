@@ -39,7 +39,7 @@ export class HttpService {
           const response: { token: string } = await this
             .execute<{ token: string }>(tag, null, url, METODOS_HTTP.POST, headers, body).toPromise();
 
-          this.autenticado(tag, response.token);
+          this.autenticado(tag, usuario, response.token);
           observer.complete();
 
         } catch (err) {
@@ -110,9 +110,9 @@ export class HttpService {
     return fetch(url, options).then(response => response.text());
   }
 
-  private autenticado(tag: string, token: string) {
-    (tag === TOKEN_TAG.CLIENTE) ? this.autenticacionService.clienteAutenticado(token) :
-      this.autenticacionService.gestorAutenticado(token);
+  private autenticado(tag: string, usuario: string, token: string) {
+    (tag === TOKEN_TAG.CLIENTE) ? this.autenticacionService.clienteAutenticado(usuario, token) :
+      this.autenticacionService.gestorAutenticado(usuario, token);
   }
 
   private noAutenticado(tag: string) {
