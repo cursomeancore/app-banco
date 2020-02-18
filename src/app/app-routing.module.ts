@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { GestoresComponent } from './components/gestores/gestores.component';
 import { LoginClienteComponent } from './components/login/login-cliente/login-cliente.component';
 import { LoginGestorComponent } from './components/login/login-gestor/login-gestor.component';
@@ -10,18 +10,22 @@ import { ClienteInfoComponent } from './components/cliente-info/cliente-info.com
 import { ClienteIngresoComponent } from './components/cliente-ingreso/cliente-ingreso.component';
 import { ClienteTransferenciaComponent } from './components/cliente-transferencia/cliente-transferencia.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AuthGestorGuard } from './auth-gestor-guard.service';
+import { AuthClienteGuard } from './auth-cliente-guard.service';
+import { RedirectGuardService } from './redirect-guard.service';
 
 const appRoutes: Routes = [
-  { path: 'gestores', component: GestoresComponent },
-  { path: 'clientes', component: ClientesComponent },
-  { path: 'mensajes', component: MensajesComponent },
-  { path: 'transferencias', component: TransferenciasComponent },
-  { path: 'cliente/info', component: ClienteInfoComponent },
-  { path: 'cliente/transferencias', component: ClienteTransferenciaComponent },
-  { path: 'cliente/ingreso', component: ClienteIngresoComponent },
+  { path: 'gestores', canActivate: [AuthGestorGuard], component: GestoresComponent },
+  { path: 'clientes', canActivate: [AuthGestorGuard], component: ClientesComponent },
+  { path: 'mensajes', canActivate: [AuthGestorGuard], component: MensajesComponent },
+  { path: 'transferencias', canActivate: [AuthGestorGuard], component: TransferenciasComponent },
+  { path: 'cliente/info', canActivate: [AuthClienteGuard], component: ClienteInfoComponent },
+  { path: 'cliente/transferencias', canActivate: [AuthClienteGuard],  component: ClienteTransferenciaComponent },
+  { path: 'cliente/ingreso', canActivate: [AuthClienteGuard], component: ClienteIngresoComponent },
   { path: 'login/cliente', component: LoginClienteComponent },
   { path: 'login/gestor', component: LoginGestorComponent },
-  { path: '**', component: NotFoundComponent }
+  { path: '', canActivate: [RedirectGuardService], redirectTo: '',  pathMatch: 'full'},
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
