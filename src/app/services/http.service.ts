@@ -76,7 +76,7 @@ export class HttpService {
 
           const data = await this.send(`${url}`, method, headers, body);
           const response = JSON.parse(data) as ResponseHttp<T>;
-          console.log(response);
+
           if (!response.ok) {
 
             if (response.msg === MSG.PRIVILEGIOS_INSUFICIENTES) {

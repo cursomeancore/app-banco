@@ -11,10 +11,19 @@ import { Gestor } from './../../../models/gestor';
 export class GestoresListarComponent implements OnInit {
 
   gestores: Gestor[];
+  nuevo: number;
 
   constructor(private httpGestorService: HttpGestorService) { }
 
   ngOnInit() {
     this.httpGestorService.obtenerGestores().subscribe(gestores => this.gestores = gestores);
+  }
+
+  agregarGestor(gestor: Gestor) {
+    this.gestores.push(gestor);
+    this.nuevo = gestor.id;
+    setTimeout(() => {
+      this.nuevo = null;
+    }, 2000);
   }
 }

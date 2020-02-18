@@ -8,7 +8,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let gestor of gestores">
+      <tr *ngFor="let gestor of gestores" id="{{gestor.id}}" [ngClass]="(gestor.id === nuevo) ? 'nuevo' : ''">
         <th scope="row">{{gestor.id}}</th>
         <td>{{gestor.usuario}}</td>
         <td>{{gestor.correo}}</td>

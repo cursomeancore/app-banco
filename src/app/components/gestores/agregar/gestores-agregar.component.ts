@@ -5,9 +5,12 @@ import { AlertService } from '../../../services/alert.service';
 import {
   Component,
   ElementRef,
-  ViewChild
+  ViewChild,
+  Output
 } from '@angular/core';
 import { TIPO_ALERTA } from '../../../data/alerta';
+import { EventEmitter } from '@angular/core';
+import { Gestor } from './../../../models/gestor';
 
 
 @Component({
@@ -16,39 +19,47 @@ import { TIPO_ALERTA } from '../../../data/alerta';
   styleUrls: ['./gestores-agregar.component.css']
 })
 export class GestoresAgregarComponent {
-  @ViewChild('usuarioInput', { static: false }) nameInputRef: ElementRef;
-  @ViewChild('passwordInput', { static: false }) amountInputRef: ElementRef;
+  @ViewChild('usuarioInput', { static: false }) usuarioInputRef: ElementRef;
+  @ViewChild('passwordInput', { static: false }) passwordInputRef: ElementRef;
+  @ViewChild('correoInput', { static: false }) correoInputRef: ElementRef;
+  @Output() nuevoGestor = new EventEmitter<Gestor>();
 
   constructor(private httpGestorService: HttpGestorService, private alertService: AlertService) { }
 
-  onAgregarGestor(usuarioInput: HTMLInputElement,
-                  passwordInput: HTMLInputElement,
-                  correoInput: HTMLInputElement) {
+  onAgregarGestor() {
 
-    const usuario = {
-      usuario: usuarioInput.value,
-      password: passwordInput.value,
-      correo: correoInput.value,
+    const gestor = {
+      usuario: this.usuarioInputRef.nativeElement.value,
+      password:  this.passwordInputRef.nativeElement.value,
+      correo:  this.correoInputRef.nativeElement.value,
     }
 
-    this.httpGestorService.agregarGestor(usuario)
+    this.httpGestorService.agregarGestor(gestor)
     .subscribe(() => {
       this.alertService.enviarAlerta({
         texto: 'Gestor agregado correctamente',
         tipo: TIPO_ALERTA.SUCCESS,
-        tiempo: 4000
+        tiempo: 2000
       });
 
       // resetear todos los campos
-      usuarioInput.value = '';
-      passwordInput.value = '';
-      correoInput.value = '';
+      this.usuarioInputRef.nativeElement.value = '';
+      this.passwordInputRef.nativeElement.value = '';
+      this.correoInputRef.nativeElement.value = '';
+
+      // es necesario obtener el nuevo gestor para conocer el id
+      this.httpGestorService.obtenerGestorPorUsuario(gestor.usuario).subscribe(nuevoGestor => {
+
+         // emitir el nuevo gestor
+        this.nuevoGestor.emit(nuevoGestor);
+
+      });
 
     }, (err) => {
       this.alertService.enviarAlerta({
         texto: err,
         tipo: TIPO_ALERTA.DANGER,
-        tiempo: 4000
+        tiempo: 2000
       });
     });
   }

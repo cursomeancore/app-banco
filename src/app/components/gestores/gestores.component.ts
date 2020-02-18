@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertService } from '../../services/alert.service';
 import { TIPO_ALERTA } from '../../data/alerta';
 import { HttpGestorService } from '../../services/http-gestor.service';
+import { Gestor } from './../../models/gestor';
+import { GestoresListarComponent } from './listar/gestores-listar.component';
 
 @Component({
   selector: 'app-gestores',
@@ -10,9 +12,12 @@ import { HttpGestorService } from '../../services/http-gestor.service';
 })
 export class GestoresComponent implements OnInit {
 
-  constructor(private alertService: AlertService, private httpGestorService: HttpGestorService) {
-
-  }
+  @ViewChild(GestoresListarComponent) private gestoresListarComponent: GestoresListarComponent;
+  constructor(private alertService: AlertService, private httpGestorService: HttpGestorService) { }
 
   ngOnInit() { }
+
+  onNuevoGestor(gestor: Gestor) {
+    this.gestoresListarComponent.agregarGestor(gestor);
+  }
 }

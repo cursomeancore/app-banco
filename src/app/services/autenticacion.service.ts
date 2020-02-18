@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export enum TOKEN_TAG {
   CLIENTE = 'TOKEN_CLIENTE',
@@ -12,6 +13,7 @@ export class AutenticacionService {
 
   private alertasCliente = new EventEmitter<boolean>();
   private alertasGestor = new EventEmitter<boolean>();
+
 
   set tokenGestor(token: string) {
     (!token) ? localStorage.removeItem(TOKEN_TAG.GESTOR) : localStorage.setItem(TOKEN_TAG.GESTOR, token);
@@ -29,7 +31,7 @@ export class AutenticacionService {
     return localStorage.getItem(TOKEN_TAG.CLIENTE);
   }
 
-  constructor() {
+  constructor(private router: Router) {
 
     if (this.tokenCliente) {
       this.clienteAutenticado(this.tokenCliente);
@@ -87,5 +89,6 @@ export class AutenticacionService {
     this.tokenGestor = null;
     this.clienteNoAutenticado();
     this.gestorNoAutenticado();
+    this.router.navigate(['/']);
   }
 }
