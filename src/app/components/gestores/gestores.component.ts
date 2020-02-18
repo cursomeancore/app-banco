@@ -10,7 +10,7 @@ import { HttpGestorService } from '../../services/http-gestor.service';
 })
 export class GestoresComponent implements OnInit {
 
-  constructor(private alertService: AlertService, private httpGestorService: HttpGestorService) { 
+  constructor(private alertService: AlertService, private httpGestorService: HttpGestorService) {
 
   }
 

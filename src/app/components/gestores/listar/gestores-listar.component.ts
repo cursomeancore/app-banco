@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpGestorService } from '../../../services/http-gestor.service';
+import { Gestor } from './../../../models/gestor';
 
 
 @Component({
@@ -6,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './gestores-listar.component.html',
   styleUrls: ['./gestores-listar.component.css']
 })
-export class GestoresListarComponent {
+export class GestoresListarComponent implements OnInit {
 
-  constructor() { }
+  gestores: Gestor[];
+  
+
+  constructor(private httpGestorService: HttpGestorService) { }
+
+  ngOnInit() {
+    this.httpGestorService.obtenerGestores().subscribe(gestores => this.gestores = gestores);
+  }
 }

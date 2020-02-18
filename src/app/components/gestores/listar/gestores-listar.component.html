@@ -4,44 +4,15 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Usuario</th>
-        <th scope="col">Password</th>
         <th scope="col">Correo</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>gestor1</td>
-        <td>gestor1</td>
-        <td>gestor1@mail.com</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>gestor2</td>
-        <td>gestor2</td>
-        <td>gestor2@mail.com</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>gestor3</td>
-        <td>gestor3</td>
-        <td>gestor3@mail.com</td>
+      <tr *ngFor="let gestor of gestores">
+        <th scope="row">{{gestor.id}}</th>
+        <td>{{gestor.usuario}}</td>
+        <td>{{gestor.correo}}</td>
       </tr>
     </tbody>
   </table>
 </div>
-
-  <!-- <div class="row">
-    <div class="col-xs-10">
-      <hr>
-      <ul class="list-group">
-        <a
-          class="list-group-item"
-          style="cursor: pointer"
-          *ngFor="let b of [{a: 2}]"
-        >
-          {{ b.a }} ({{ b.a }})
-        </a>
-      </ul>
-    </div>
-  </div>-->
