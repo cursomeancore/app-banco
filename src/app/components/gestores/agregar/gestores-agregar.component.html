@@ -33,6 +33,9 @@
             (click)="onAgregarGestor()">
             Agregar
           </button>
+          <span class="loading" [ngClass]="(agregado) ?  '' : 'hidden'">
+            <img height="20px" src="assets/loading.gif">
+          </span>
         </div>
       </div>
     </form>

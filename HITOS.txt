@@ -16,3 +16,5 @@
 16. Añadir un botón a cada elemento de la lista de gestores e implementar la lógica para eliminar
 17. Evitar que se puede eliminar el gestor que actualmente está autenticado
 18. Implementar la sección completa de los clientes
+19. Agregar icono de carga cuando se agrega/elimina un cliente/gestor
+20. Iluminar enlaces del header en las rutas activas

@@ -8,6 +8,7 @@
         <th scope="col">Correo</th>
         <th scope="col">Saldo</th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +22,11 @@
           <a [routerLink]="" (click)="onEliminarCliente(cliente)" >
             <img height="20px" src="assets/icon-eliminar.png">
           </a>
+        </td>
+        <td>
+          <span [ngClass]="(cliente.id === eliminado) ?  '' : 'hidden'">
+            <img height="20px" src="assets/loading.gif">
+          </span>
         </td>
       </tr>
     </tbody>

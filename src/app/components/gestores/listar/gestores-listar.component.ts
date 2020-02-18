@@ -15,6 +15,7 @@ export class GestoresListarComponent implements OnInit {
 
   gestores: Gestor[];
   nuevo: number;
+  eliminado: number;
 
   constructor(private httpGestorService: HttpGestorService,
               private autenticacionService: AutenticacionService,
@@ -42,7 +43,10 @@ export class GestoresListarComponent implements OnInit {
       });
     }
 
+    this.eliminado = gestorParaEliminar.id;
+
     this.httpGestorService.eliminarGestorPorId(gestorParaEliminar.id).subscribe(() => {
+      this.eliminado = null;
       this.gestores = this.gestores.filter(gestor => gestor.id !== gestorParaEliminar.id);
     });
   }

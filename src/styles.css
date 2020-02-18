@@ -6,3 +6,11 @@
 .btn-success.active { 
   background-color: #28a745; 
 } 
+
+.hidden {
+  display: none;
+}
+
+.loading {
+  margin-left: 20px;
+}

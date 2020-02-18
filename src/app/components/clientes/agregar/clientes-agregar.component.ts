@@ -20,6 +20,7 @@ export class ClientesAgregarComponent implements OnInit {
   @Output() nuevoCliente = new EventEmitter<Cliente>();
 
   gestores: Gestor[];
+  agregado = false;
 
   constructor(private httpGestorService: HttpGestorService, private alertService: AlertService) { }
 
@@ -28,6 +29,8 @@ export class ClientesAgregarComponent implements OnInit {
   }
 
   onAgregarCliente() {
+
+    this.agregado = true;
 
     const cliente: Cliente = {
       id_gestor: +this.gestorAsociadoInputRef.nativeElement.value,
@@ -60,6 +63,8 @@ export class ClientesAgregarComponent implements OnInit {
           this.passwordInputRef.nativeElement.value = '';
           this.correoInputRef.nativeElement.value = '';
           this.saldoInputRef.nativeElement.value = '';
+
+          this.agregado = false;
         });
       });
 

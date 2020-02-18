@@ -24,9 +24,13 @@ export class GestoresAgregarComponent {
   @ViewChild('correoInput', { static: false }) correoInputRef: ElementRef;
   @Output() nuevoGestor = new EventEmitter<Gestor>();
 
+  agregado = false;
+
   constructor(private httpGestorService: HttpGestorService, private alertService: AlertService) { }
 
   onAgregarGestor() {
+
+    this.agregado = true;
 
     const gestor: Gestor = {
       usuario: this.usuarioInputRef.nativeElement.value,
@@ -51,6 +55,8 @@ export class GestoresAgregarComponent {
         this.usuarioInputRef.nativeElement.value = '';
         this.passwordInputRef.nativeElement.value = '';
         this.correoInputRef.nativeElement.value = '';
+
+        this.agregado = false;
 
       });
 

@@ -6,6 +6,7 @@
         <th scope="col">Usuario</th>
         <th scope="col">Correo</th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +19,11 @@
             <img height="20px" src="assets/icon-eliminar.png">
           </a>
         </td>
+        <td>
+          <span [ngClass]="(gestor.id === eliminado) ?  '' : 'hidden'">
+            <img height="20px" src="assets/loading.gif">
+          </span>
+        </td>       
       </tr>
     </tbody>
   </table>
