@@ -13,3 +13,4 @@
 13. Realizar logout y redireccionar a la pantalla de login si se produce un error interno o el token se vuelve inválido.
 14. Modificar CSS de botones (active background) y arreglar las alertas para que no desplacen el contenido hacia abajo.
 15. Implementar la lógica necesaria para actualizar la lista de gestores cuando se agrega uno nuevo sin necesidad de recargar la página
+16. Añadir un botón a cada elemento de la lista de gestores e implementar la lógica para eliminar

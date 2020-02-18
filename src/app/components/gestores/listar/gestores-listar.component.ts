@@ -19,11 +19,17 @@ export class GestoresListarComponent implements OnInit {
     this.httpGestorService.obtenerGestores().subscribe(gestores => this.gestores = gestores);
   }
 
-  agregarGestor(gestor: Gestor) {
+  agregarGestor(gestor: Gestor): void {
     this.gestores.push(gestor);
     this.nuevo = gestor.id;
     setTimeout(() => {
       this.nuevo = null;
     }, 2000);
+  }
+
+  onEliminarGestor(id: number) {
+    this.httpGestorService.eliminarGestorPorId(id).subscribe(() => {
+      this.gestores = this.gestores.filter(gestor => gestor.id !== id);
+    });
   }
 }
