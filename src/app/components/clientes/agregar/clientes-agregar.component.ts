@@ -74,6 +74,8 @@ export class ClientesAgregarComponent implements OnInit {
         tipo: TIPO_ALERTA.DANGER,
         tiempo: 2000
       });
+
+      this.agregado = false;
     });
   }
 }

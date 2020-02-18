@@ -66,6 +66,8 @@ export class GestoresAgregarComponent {
         tipo: TIPO_ALERTA.DANGER,
         tiempo: 2000
       });
+
+      this.agregado = false;
     });
   }
 }
