@@ -28,30 +28,29 @@ export class GestoresAgregarComponent {
 
   onAgregarGestor() {
 
-    const gestor = {
+    const gestor: Gestor = {
       usuario: this.usuarioInputRef.nativeElement.value,
-      password:  this.passwordInputRef.nativeElement.value,
-      correo:  this.correoInputRef.nativeElement.value,
-    }
+      password: this.passwordInputRef.nativeElement.value,
+      correo: this.correoInputRef.nativeElement.value,
+    };
 
-    this.httpGestorService.agregarGestor(gestor)
-    .subscribe(() => {
+    this.httpGestorService.agregarGestor(gestor).subscribe(() => {
       this.alertService.enviarAlerta({
         texto: 'Gestor agregado correctamente',
         tipo: TIPO_ALERTA.SUCCESS,
         tiempo: 2000
       });
 
-      // resetear todos los campos
-      this.usuarioInputRef.nativeElement.value = '';
-      this.passwordInputRef.nativeElement.value = '';
-      this.correoInputRef.nativeElement.value = '';
-
       // es necesario obtener el nuevo gestor para conocer el id
       this.httpGestorService.obtenerGestorPorUsuario(gestor.usuario).subscribe(nuevoGestor => {
 
-         // emitir el nuevo gestor
+        // emitir el nuevo gestor
         this.nuevoGestor.emit(nuevoGestor);
+
+        // resetear todos los campos
+        this.usuarioInputRef.nativeElement.value = '';
+        this.passwordInputRef.nativeElement.value = '';
+        this.correoInputRef.nativeElement.value = '';
 
       });
 

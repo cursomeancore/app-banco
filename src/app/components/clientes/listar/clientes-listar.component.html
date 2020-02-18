@@ -1,0 +1,28 @@
+<div id="container" *ngIf="clientes && clientes.length > 0" class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>        
+        <th scope="col">Usuario</th>
+        <th scope="col">Gestor asociado</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Saldo</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes" id="{{cliente.id}}" [ngClass]="(cliente.id === nuevo) ? 'nuevo' : ''">
+        <th scope="row">{{cliente.id}}</th>
+        <td>{{cliente.usuario}}</td>
+        <td>{{cliente.usuario_gestor}}</td>
+        <td>{{cliente.correo}}</td>
+        <td>{{cliente.saldo}}</td>
+        <td>
+          <a [routerLink]="" (click)="onEliminarCliente(cliente)" >
+            <img height="20px" src="assets/icon-eliminar.png">
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -18,6 +18,8 @@ import { ClienteInfoComponent } from './components/cliente-info/cliente-info.com
 import { ClienteIngresoComponent } from './components/cliente-ingreso/cliente-ingreso.component';
 import { ClienteTransferenciaComponent } from './components/cliente-transferencia/cliente-transferencia.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ClientesListarComponent } from './components/clientes/listar/clientes-listar.component';
+import { ClientesAgregarComponent } from './components/clientes/agregar/clientes-agregar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ClienteInfoComponent,
     ClienteIngresoComponent,
     ClienteTransferenciaComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ClientesListarComponent,
+    ClientesAgregarComponent
   ],
   imports: [
     BrowserModule,

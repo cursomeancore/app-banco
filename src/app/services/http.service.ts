@@ -37,7 +37,7 @@ export class HttpService {
 
         try {
           const response: { token: string } = await this
-            .execute<{ token: string }>(tag, null, url, METODOS_HTTP.POST, headers, body).toPromise();
+            .execute<{ token: string }>(null, url, METODOS_HTTP.POST, headers, body).toPromise();
 
           this.autenticado(tag, usuario, response.token);
           observer.complete();
@@ -51,15 +51,14 @@ export class HttpService {
   }
 
   public executeGestor<T>(url: string, method: METODOS_HTTP, headers?: Headers, body?: string): Observable<T> {
-    return this.execute(TOKEN_TAG.GESTOR, this.autenticacionService.tokenGestor, url, method, headers, body);
+    return this.execute(this.autenticacionService.tokenGestor, url, method, headers, body);
   }
 
   public executeCliente<T>(url: string, method: METODOS_HTTP, headers?: Headers, body?: string): Observable<T> {
-    return this.execute(TOKEN_TAG.CLIENTE, this.autenticacionService.tokenCliente, url, method, headers, body);
+    return this.execute(this.autenticacionService.tokenCliente, url, method, headers, body);
   }
 
-  private execute<T>( tag: string,
-                      token: string,
+  private execute<T>( token: string,
                       url: string,
                       method: METODOS_HTTP,
                       headers?: Headers,

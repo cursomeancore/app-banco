@@ -17,8 +17,8 @@ export class GestoresListarComponent implements OnInit {
   nuevo: number;
 
   constructor(private httpGestorService: HttpGestorService,
-    private autenticacionService: AutenticacionService,
-    private alertService: AlertService) { }
+              private autenticacionService: AutenticacionService,
+              private alertService: AlertService) { }
 
   ngOnInit() {
     this.httpGestorService.obtenerGestores().subscribe(gestores => this.gestores = gestores);

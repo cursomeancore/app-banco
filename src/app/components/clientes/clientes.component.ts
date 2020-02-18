@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Cliente } from '../../models/cliente';
+import { ClientesListarComponent } from '../clientes/listar/clientes-listar.component';
 
 @Component({
   selector: 'app-clientes',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
 
+  @ViewChild(ClientesListarComponent) private clientesListarComponent: ClientesListarComponent;
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() { }
+
+  onNuevoCliente(cliente: Cliente) {
+    this.clientesListarComponent.agregarCliente(cliente);
   }
 
 }

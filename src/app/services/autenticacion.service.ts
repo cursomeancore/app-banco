@@ -22,11 +22,11 @@ export class AutenticacionService {
   constructor(private router: Router) {
 
     if (this.tokenCliente) {
-      this.clienteAutenticado(this.tokenCliente, this.usuarioCliente);
+      this.clienteAutenticado(this.usuarioCliente, this.tokenCliente);
     }
 
     if (this.tokenGestor) {
-      this.gestorAutenticado(this.tokenGestor, this.usuarioGestor);
+      this.gestorAutenticado(this.usuarioGestor, this.tokenGestor);
     }
   }
 
@@ -38,9 +38,9 @@ export class AutenticacionService {
     return (this.tokenGestor) ? true : false;
   }
 
-  clienteAutenticado(token: string, usuario: string): void {
-    this.tokenCliente = token;
+  clienteAutenticado(usuario: string, token: string): void {
     this.usuarioCliente = usuario;
+    this.tokenCliente = token;
     this.alertasCliente.emit(true);
   }
 
@@ -48,9 +48,9 @@ export class AutenticacionService {
     this.alertasCliente.emit(false);
   }
 
-  gestorAutenticado(usuario, token: string): void {
-    this.tokenGestor = token;
+  gestorAutenticado(usuario: string, token: string): void {
     this.usuarioGestor = usuario;
+    this.tokenGestor = token;
     this.alertasGestor.emit(true);
   }
 

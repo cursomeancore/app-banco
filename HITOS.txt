@@ -15,3 +15,4 @@
 15. Implementar la lógica necesaria para actualizar la lista de gestores cuando se agrega uno nuevo sin necesidad de recargar la página
 16. Añadir un botón a cada elemento de la lista de gestores e implementar la lógica para eliminar
 17. Evitar que se puede eliminar el gestor que actualmente está autenticado
+18. Implementar la sección completa de los clientes

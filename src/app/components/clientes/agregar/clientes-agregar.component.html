@@ -1,0 +1,56 @@
+<div id="container" class="row">
+  <div class="col-xs-12">
+    <form>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="usuario">Usuario</label>
+          <input
+            type="text"
+            id="usuario"
+            class="form-control"
+            #usuarioInput>
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="gestorAsociado">Gestor asociado</label>
+          <select #gestorAsociadoInput class="browser-default custom-select">
+            <option *ngFor="let gestor of gestores" value="{{gestor.id}}">
+              {{gestor.usuario}}
+            </option> 
+          </select>
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            #passwordInput>
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="correo">Correo</label>
+          <input
+            type="email"
+            id="correo"
+            class="form-control"
+            #correoInput>
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="saldo">Saldo</label>
+          <input
+            type="text"
+            id="saldo"
+            class="form-control"
+            #saldoInput>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button class="btn btn-success shadow-none" type="submit" 
+            (click)="onAgregarCliente()">
+            Agregar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
