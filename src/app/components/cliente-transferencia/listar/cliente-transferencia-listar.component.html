@@ -16,7 +16,6 @@
     <thead>
       <tr>
         <th scope="col">#</th>        
-        <th scope="col">Ordenante</th>
         <th scope="col">Beneficiario</th>
         <th scope="col">Concepto</th>
         <th scope="col">Importe</th>
@@ -28,7 +27,6 @@
     <tbody>
       <tr *ngFor="let transferencia of transferencias">
         <th scope="row">{{transferencia.id}}</th>
-        <td>{{transferencia.usuario_ordenante}}</td>
         <td>{{transferencia.usuario_beneficiario}}</td>
         <td>{{transferencia.concepto}}</td>
         <td>{{transferencia.importe}}</td>

@@ -17,13 +17,14 @@ import { TransferenciasComponent } from './components/transferencias/transferenc
 import { ClienteInfoComponent } from './components/cliente-info/cliente-info.component';
 import { ClienteIngresoComponent } from './components/cliente-ingreso/cliente-ingreso.component';
 import { ClienteTransferenciaComponent } from './components/cliente-transferencia/cliente-transferencia.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClientesListarComponent } from './components/clientes/listar/clientes-listar.component';
 import { ClientesAgregarComponent } from './components/clientes/agregar/clientes-agregar.component';
 import { MensajesEnviarComponent } from './components/mensajes/enviar/mensajes-enviar.component';
 import { MensajesEnviadosComponent } from './components/mensajes/enviados/mensajes-enviados.component';
 import { MensajesRecibidosComponent } from './components/mensajes/recibidos/mensajes-recibidos.component';
 import { TransferenciasListarComponent } from './components/transferencias/listar/transferencias-listar.component';
+import { ClienteTransferenciaListarComponent } from './components/cliente-transferencia/listar/cliente-transferencia-listar.component';
+import { ClienteTransferenciaIngresarComponent } from './components/cliente-transferencia/ingresar/cliente-transferencia-ingresar.component';
 
 
 @NgModule({
@@ -42,13 +43,14 @@ import { TransferenciasListarComponent } from './components/transferencias/lista
     ClienteInfoComponent,
     ClienteIngresoComponent,
     ClienteTransferenciaComponent,
-    NotFoundComponent,
     ClientesListarComponent,
     ClientesAgregarComponent,
     MensajesEnviarComponent,
     MensajesEnviadosComponent,
     MensajesRecibidosComponent,
-    TransferenciasListarComponent
+    TransferenciasListarComponent,
+    ClienteTransferenciaListarComponent,
+    ClienteTransferenciaIngresarComponent
   ],
   imports: [
     BrowserModule,

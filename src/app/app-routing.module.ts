@@ -9,7 +9,6 @@ import { TransferenciasComponent } from './components/transferencias/transferenc
 import { ClienteInfoComponent } from './components/cliente-info/cliente-info.component';
 import { ClienteIngresoComponent } from './components/cliente-ingreso/cliente-ingreso.component';
 import { ClienteTransferenciaComponent } from './components/cliente-transferencia/cliente-transferencia.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthGestorGuard } from './auth-gestor-guard.service';
 import { AuthClienteGuard } from './auth-cliente-guard.service';
 import { RedirectGuardService } from './redirect-guard.service';

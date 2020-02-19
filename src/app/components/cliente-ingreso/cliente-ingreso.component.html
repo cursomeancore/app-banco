@@ -1,1 +1,31 @@
-<p>cliente-ingreso works!</p>
+<div id="container" class="row">
+  <div class="col-md-12">
+    <ul class="list-group" *ngIf="saldo != null">
+      <li class="list-group-item">
+
+        <b>Saldo: {{saldo}} €</b>
+        <span id="loading" [ngClass]="(ingresando) ?  '' : 'hidden'">
+          <img height="20px" src="assets/loading.gif">
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div id="container" class="row">
+  <div class="col-md-12">
+    <form class="row">
+      <div class="col-sm-2 form-group">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" id="cantidad" value="100" class="form-control" #cantidadInput>
+      </div>
+
+      <div class="col-sm-12">
+        <button (click)="realizarIngreso()" class="btn btn-success shadow-none" type="submit">
+          Ingresar
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

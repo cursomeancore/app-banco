@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Transferencia } from '../../../models/transferencia';
 import { HttpGestorService } from '../../../services/http-gestor.service';
 
@@ -7,10 +7,10 @@ import { HttpGestorService } from '../../../services/http-gestor.service';
   templateUrl: './transferencias-listar.component.html',
   styleUrls: ['./transferencias-listar.component.css']
 })
-export class TransferenciasListarComponent implements OnInit {
+export class TransferenciasListarComponent implements OnInit, OnDestroy {
 
   transferencias: Transferencia[];
-  actualizado = false;
+  actualizando = false;
   private actualizarAutomaticamente = false;
   private actualizarAutomaticamenteInterval: any;
 
@@ -24,7 +24,7 @@ export class TransferenciasListarComponent implements OnInit {
 
     (async () => {
 
-      this.actualizado = true;
+      this.actualizando = true;
 
       const transferencias: Transferencia[] = await this.httpGestorService
         .obtenerTransferencias().toPromise();
@@ -51,7 +51,7 @@ export class TransferenciasListarComponent implements OnInit {
       }
 
       this.transferencias = transferencias;
-      this.actualizado = false;
+      this.actualizando = false;
     })();
   }
 
@@ -64,10 +64,15 @@ export class TransferenciasListarComponent implements OnInit {
     this.actualizarAutomaticamente = !this.actualizarAutomaticamente;
 
     if (this.actualizarAutomaticamente) {
-      this.actualizarAutomaticamenteInterval = setInterval(() => this.obtenerTransferencias, 1000);
+      this.actualizarAutomaticamenteInterval = setInterval(() => this.obtenerTransferencias(), 1000);
     } else if (this.actualizarAutomaticamenteInterval) {
       clearInterval(this.actualizarAutomaticamenteInterval);
     }
   }
 
+  ngOnDestroy(): void {
+    if (this.actualizarAutomaticamenteInterval) {
+      clearInterval(this.actualizarAutomaticamenteInterval);
+    }
+  }
 }

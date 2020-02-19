@@ -1,0 +1,43 @@
+<div id="container" class="row">
+  <div class="col-md-12">
+    <ul class="list-group" *ngIf="saldo != null">
+      <li class="list-group-item">
+
+        <b>Saldo: {{saldo}} €</b>
+        <span id="loading" [ngClass]="(ingresando) ?  '' : 'hidden'">
+          <img height="20px" src="assets/loading.gif">
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div id="container" class="row">
+  <div class="col-md-12">
+  <form>
+    <div class="row">
+      <div class="col-sm-2 form-group">
+        <label for="usuario">Id de beneficiario</label>
+        <input type="number" id="usuario" class="form-control" #idBeneficiarioInput>
+      </div>
+      <div class="col-sm-2 form-group">
+        <label for="password">Importe</label>
+        <input value="100" type="number" id="password" class="form-control" #importeInput>
+      </div>
+      <div class="col-sm-8 form-group">
+        <label for="correo">Concepto</label>
+        <input type="type" maxlength="30" id="correo" class="form-control" #conceptoInput>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button class="btn btn-success shadow-none" type="submit" (click)="onRealizarTransferencia()">
+          Aceptar
+        </button>
+        <span id="loading" [ngClass]="(realizandoTransferencia) ?  '' : 'hidden'">
+          <img height="20px" src="assets/loading.gif">
+        </span>
+      </div>
+    </div>
+  </form>
+</div>

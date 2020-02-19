@@ -11,7 +11,7 @@ const SERVER = OPTIONS.SERVER;
 const URL_LOGIN_CLIENTE = `${SERVER}/login/cliente/`;
 const URL_OBTENER_INFO = `${SERVER}/cliente/`;
 const URL_REALIZAR_INGRESO = `${SERVER}/cliente/ingreso/`;
-const URL_CLIENTE_TRANSFERENCIA = `${SERVER}/cliente/transferencias/`;
+const URL_CLIENTE_TRANSFERENCIAS = `${SERVER}/cliente/transferencias/`;
 
 @Injectable({
   providedIn: 'root'
@@ -29,18 +29,19 @@ export class HttpClienteService implements InterfazCliente, InterfazAutenticatio
   }
 
   realizarIngreso(cantidad: number): Observable<string> {
-    return this.httpService.executeCliente<string>(`${URL_REALIZAR_INGRESO}${cantidad}`, METODOS_HTTP.POST);
+    return this.httpService.executeCliente<string>(`${URL_REALIZAR_INGRESO}${cantidad}`, METODOS_HTTP.GET);
   }
 
   obtenerTransferencias(): Observable<Transferencia[]> {
-    return this.httpService.executeCliente<Transferencia[]>(`${URL_CLIENTE_TRANSFERENCIA}`, METODOS_HTTP.GET);
+    return this.httpService.executeCliente<Transferencia[]>(`${URL_CLIENTE_TRANSFERENCIAS}`, METODOS_HTTP.GET);
   }
 
   obtenerTransferenciaPorId(id: number): Observable<Transferencia> {
-    return this.httpService.executeCliente<Transferencia>(`${URL_CLIENTE_TRANSFERENCIA}${id}`, METODOS_HTTP.GET);
+    return this.httpService.executeCliente<Transferencia>(`${URL_CLIENTE_TRANSFERENCIAS}${id}`, METODOS_HTTP.GET);
   }
 
   realizarTransferencia(transferencia: Transferencia): Observable<string> {
-    return this.httpService.executeCliente<string>(`${URL_CLIENTE_TRANSFERENCIA}$`, METODOS_HTTP.GET, null, JSON.stringify(transferencia));
+    return this.httpService
+      .executeCliente<string>(`${URL_CLIENTE_TRANSFERENCIAS}`, METODOS_HTTP.POST, null, JSON.stringify(transferencia));
   }
 }

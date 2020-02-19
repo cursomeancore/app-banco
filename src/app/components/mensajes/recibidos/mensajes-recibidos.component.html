@@ -28,7 +28,7 @@
         <th scope="row">{{mensaje.id}}</th>
         <td>{{mensaje.usuario_origen}}</td>
         <td>{{mensaje.texto}}</td>
-        <td>{{mensaje.fecha}}</td>
+        <td>{{mensaje.fecha | date:'short'}}</td>
         <td>
           <a [routerLink]="" (click)="onEliminarMensaje(mensaje)" >
             <img height="20px" src="assets/icon-eliminar.png">

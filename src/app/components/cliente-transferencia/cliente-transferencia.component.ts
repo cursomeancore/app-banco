@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cliente-transferencia',
   templateUrl: './cliente-transferencia.component.html',
   styleUrls: ['./cliente-transferencia.component.css']
 })
-export class ClienteTransferenciaComponent implements OnInit {
+export class ClienteTransferenciaComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor() {}
 
 }
