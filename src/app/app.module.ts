@@ -23,6 +23,8 @@ import { ClientesAgregarComponent } from './components/clientes/agregar/clientes
 import { MensajesEnviarComponent } from './components/mensajes/enviar/mensajes-enviar.component';
 import { MensajesEnviadosComponent } from './components/mensajes/enviados/mensajes-enviados.component';
 import { MensajesRecibidosComponent } from './components/mensajes/recibidos/mensajes-recibidos.component';
+import { TransferenciasListarComponent } from './components/transferencias/listar/transferencias-listar.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { MensajesRecibidosComponent } from './components/mensajes/recibidos/mens
     ClientesAgregarComponent,
     MensajesEnviarComponent,
     MensajesEnviadosComponent,
-    MensajesRecibidosComponent
+    MensajesRecibidosComponent,
+    TransferenciasListarComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/co
 import { HttpGestorService } from '../../../services/http-gestor.service';
 import { AutenticacionService } from '../../../services/autenticacion.service';
 import { Mensaje } from '../../../models/mensaje';
-import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-mensajes-enviados',
@@ -16,8 +15,8 @@ export class MensajesEnviadosComponent implements OnInit, OnDestroy {
   mensajesEnviados: Mensaje[];
   eliminado: number;
   actualizando = false;
-  actualizarAutomaticamente = false;
-  actualizarAutomaticamenteInterval: any;
+  private actualizarAutomaticamente = false;
+  private actualizarAutomaticamenteInterval: any;
 
   constructor(private httpGestorService: HttpGestorService, private autenticacionService: AutenticacionService) { }
 
@@ -25,16 +24,11 @@ export class MensajesEnviadosComponent implements OnInit, OnDestroy {
     this.obtenerMensajes();
   }
 
-  actualizarMensajes() {
-    this.actualizando = true;
-    this.obtenerMensajes();
-  }
-
   obtenerMensajes() {
 
-    console.log(this.httpGestorService);
     (async () => {
-      console.log(this.httpGestorService);
+
+      this.actualizando = true;
 
       const mensajes: Mensaje[] = await this.httpGestorService
         .obtenerMensajesEnviadosPorUsuario(this.autenticacionService.tokenGestor).toPromise();
@@ -66,6 +60,11 @@ export class MensajesEnviadosComponent implements OnInit, OnDestroy {
       this.mensajesEnviados = this.mensajesEnviados.filter(mensaje => mensaje.id !== mensajeParaEliminar.id);
       this.eliminado = null;
     });
+  }
+
+  onActualizarMensajes() {
+    this.mensajesEnviados = [];
+    this.obtenerMensajes();
   }
 
   onActualizar() {

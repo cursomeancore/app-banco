@@ -1,0 +1,39 @@
+<div id="container" class="row">
+  
+  <h2>Transferencias</h2>
+  <button id="buttonUpdate" class="btn btn-primary" (click)="onActualizarTransferencias()">Actualizar</button>
+
+  <div id="checkbutton" class="form-check">
+    <input #actualizarCheckBox type="checkbox" class="form-check-input" (change)="onActualizar()">
+    <label class="form-check-label" for="exampleCheck1">Actualizar automáticamente</label>
+  </div>
+
+  <div id="loading" [ngClass]="!actualizado ?  'hidden' : ''">
+    <img height="20px" src="assets/loading.gif">
+  </div>
+
+  <table class="table" *ngIf="transferencias && transferencias.length > 0">
+    <thead>
+      <tr>
+        <th scope="col">#</th>        
+        <th scope="col">Ordenante</th>
+        <th scope="col">Beneficiario</th>
+        <th scope="col">Concepto</th>
+        <th scope="col">Importe</th>
+        <th scope="col">Fecha</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transferencia of transferencias">
+        <th scope="row">{{transferencia.id}}</th>
+        <td>{{transferencia.usuario_ordenante}}</td>
+        <td>{{transferencia.usuario_beneficiario}}</td>
+        <td>{{transferencia.concepto}}</td>
+        <td>{{transferencia.importe}}</td>
+        <td>{{transferencia.fecha}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

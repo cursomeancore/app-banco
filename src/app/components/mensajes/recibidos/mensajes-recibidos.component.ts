@@ -13,8 +13,8 @@ export class MensajesRecibidosComponent implements OnInit, OnDestroy {
   mensajesRecibidos: Mensaje[];
   eliminado: number;
   actualizado = false;
-  actualizarAutomaticamente = false;
-  actualizarAutomaticamenteInterval: any;
+  private actualizarAutomaticamente = false;
+  private actualizarAutomaticamenteInterval: any;
 
   constructor(private httpGestorService: HttpGestorService,
               private autenticacionService: AutenticacionService) { }
@@ -23,14 +23,11 @@ export class MensajesRecibidosComponent implements OnInit, OnDestroy {
     this.obtenerMensajes();
   }
 
-  actualizarMensajes() {
-    this.actualizado = true;
-    this.obtenerMensajes();
-  }
-
   obtenerMensajes() {
 
-    (async() => {
+    (async () => {
+
+      this.actualizado = true;
 
       const mensajes: Mensaje[] = await this.httpGestorService
         .obtenerMensajesRecibidosPorUsuario(this.autenticacionService.tokenGestor).toPromise();
@@ -62,6 +59,11 @@ export class MensajesRecibidosComponent implements OnInit, OnDestroy {
       this.mensajesRecibidos = this.mensajesRecibidos.filter(mensaje => mensaje.id !== mensajeParaEliminar.id);
       this.eliminado = null;
     });
+  }
+
+  onActualizarMensajes() {
+    this.mensajesRecibidos = [];
+    this.obtenerMensajes();
   }
 
   onActualizar() {

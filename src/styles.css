@@ -1,5 +1,24 @@
+button {
+  height: 40px;
+}
+
+#buttonUpdate {
+  margin-left: 1.2em;
+  height: 40px;
+}
+
 #container {
   margin: 1em;
+}
+
+#checkbutton {
+  margin-left: 20px;
+  margin-top: 8px;
+}
+
+#loading {
+  margin-left: 20px;
+  margin-top: 0.4em;
 }
 
 .btn-success:focus, 
@@ -16,8 +35,4 @@
 
 .hidden {
   display: none;
-}
-
-.loading {
-  margin-left: 20px;
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../../../models/cliente';
 import { HttpGestorService } from '../../../services/http-gestor.service';
+import { AlertService } from '../../../services/alert.service';
+import { TIPO_ALERTA } from '../../../data/alerta';
 
 @Component({
   selector: 'app-clientes-listar',
@@ -13,7 +15,7 @@ export class ClientesListarComponent implements OnInit {
   nuevo: number;
   eliminado: number;
 
-  constructor(private httpGestorService: HttpGestorService) { }
+  constructor(private httpGestorService: HttpGestorService, private alertService: AlertService) { }
 
   ngOnInit() {
 
@@ -52,6 +54,13 @@ export class ClientesListarComponent implements OnInit {
     this.httpGestorService.eliminarClientePorId(clienteParaEliminar.id).subscribe(() => {
       this.eliminado = null;
       this.clientes = this.clientes.filter(cliente => cliente.id !== clienteParaEliminar.id);
+    }, (err) => {
+      this.alertService.enviarAlerta({
+        texto: err,
+        tipo: TIPO_ALERTA.DANGER,
+        tiempo: 4000
+      });
+      this.eliminado = null;
     });
   }
 }
