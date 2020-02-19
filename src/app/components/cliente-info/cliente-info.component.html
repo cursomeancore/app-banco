@@ -1,1 +1,18 @@
-<p>cliente-info works!</p>
+<ul class="list-group" *ngIf="cliente">
+  <li class="list-group-item">
+    <b>Identificador de usuario: </b> {{cliente.id}}
+  </li>
+  <li class="list-group-item">
+    <b>Nombre de usuario: </b> {{cliente.usuario}}
+  </li>
+  <li class="list-group-item">
+    <b>Identificador del gestor: </b> {{cliente.id_gestor}}
+  </li>
+  <li class="list-group-item">
+    <b>Correo: </b> {{cliente.correo}}
+  </li>
+  <li class="list-group-item">
+    <b>Saldo: </b> {{cliente.saldo}} €
+  </li>
+  
+</ul>

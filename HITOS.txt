@@ -20,3 +20,4 @@
 20. Iluminar enlaces del header en las rutas activas
 21. Implementar la sección completa de los mensajes
 22. Implementar la sección completa de las transferencias
+23. Implementar la sección de información del cliente
