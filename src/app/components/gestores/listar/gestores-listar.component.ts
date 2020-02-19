@@ -48,6 +48,14 @@ export class GestoresListarComponent implements OnInit {
     this.httpGestorService.eliminarGestorPorId(gestorParaEliminar.id).subscribe(() => {
       this.eliminado = null;
       this.gestores = this.gestores.filter(gestor => gestor.id !== gestorParaEliminar.id);
+    }, (err) => {
+
+      this.alertService.enviarAlerta({
+        texto: err,
+        tipo: TIPO_ALERTA.DANGER,
+        tiempo: 4000
+      });
+      this.eliminado = null;
     });
   }
 }

@@ -7,3 +7,9 @@ button {
   float: right;
   margin-left: 0.6em;
 }
+
+#checkbutton {
+  margin-left: 20px;
+  margin-top: 8px;
+}
+

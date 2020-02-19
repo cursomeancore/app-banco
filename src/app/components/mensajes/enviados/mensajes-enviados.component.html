@@ -2,7 +2,13 @@
   
   <h2>Mensajes enviados</h2>
   <button class="btn btn-primary" (click)="actualizarMensajes()">Actualizar</button>
-  <div id="loading" [ngClass]="!actualizado ?  'hidden' : ''">
+
+  <div id="checkbutton" class="form-check">
+    <input #actualizarCheckBox type="checkbox" class="form-check-input" (change)="onActualizar()">
+    <label class="form-check-label" for="exampleCheck1">Actualizar automáticamente</label>
+  </div>
+
+  <div id="loading" [ngClass]="!actualizando ?  'hidden' : ''">
     <img height="20px" src="assets/loading.gif">
   </div>
 
